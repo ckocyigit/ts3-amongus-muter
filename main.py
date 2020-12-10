@@ -11,6 +11,9 @@ teamspeakPassword = "hRhTjxM9"
 teamspeakSID = 1
 teamspeakAmongUsChannelID = "71"
 teamspeakAmongUsServerGroupID = "51"
+amongUsApiServerIP = "localhost"
+amongUsApiServerPort = "42069"
+
 
 
 def mute():
@@ -54,7 +57,7 @@ def handleEvent(event):
 
 
 async def client():
-    async with websockets.connect('ws://localhost:42069/api') as websocket:
+    async with websockets.connect('ws://{}:{}/api'.format(amongUsApiServerIP, amongUsApiServerPort)) as websocket:
         while True:
             handleEvent(await websocket.recv())
 
