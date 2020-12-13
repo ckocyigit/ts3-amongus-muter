@@ -17,12 +17,20 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller
 
-    - name: Package Application
-      uses: JackMcKew/pyinstaller-action-windows@main
+    - name: build with pyinstaller
+      run: |
+        pyinstaller --onefile main.py
+        
+    - name: Create Release
+      id: create_release
+      uses: "marvinpinto/action-automatic-releases@latest"
+      
       with:
-        path: /
-
-    - uses: actions/upload-artifact@v2
-      with:
-        name: main.exe
-        path: /dist/
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "master"
+        prerelease: true
+        title: "Development Build"
+        files: |
+          LICENSE.txt
+          config.json
+          /dist/*.exe
