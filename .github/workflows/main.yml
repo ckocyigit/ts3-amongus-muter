@@ -19,7 +19,7 @@ jobs:
 
     - name: build with pyinstaller
       run: |
-        pyinstaller --onefile main.py
+        pyinstaller --onefile ts3-mute-bot.py
         
     - name: Create Release
       id: create_release
@@ -33,4 +33,4 @@ jobs:
         files: |
           LICENSE.txt
           config.json
-          /dist/*.exe
+          /dist/ts3-mute-bot.exe
