@@ -1,0 +1,10 @@
+{
+  "teamspeakIP" : "192.168.XXX.XXX",
+  "teamspeakUser" : "serveradmin",
+  "teamspeakPassword" : "",
+  "teamspeakSID" : 1,
+  "teamspeakAmongUsChannelID" : "XX",
+  "teamspeakAmongUsServerGroupID" : "XX",
+  "amongUsApiServerIP" : "localhost",
+  "amongUsApiServerPort" : "42069"
+}
