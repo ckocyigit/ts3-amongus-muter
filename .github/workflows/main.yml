@@ -3,10 +3,17 @@ on: [push]
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
-    - name: PyInstaller Windows
+    - uses: actions/checkout@v2
+
+    - name: Package Application
       uses: JackMcKew/pyinstaller-action-windows@main
       with:
-       path: src
+        path: src
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: name-of-artifact
+        path: src/dist/windows
