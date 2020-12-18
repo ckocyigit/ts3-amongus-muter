@@ -1,1 +1,4 @@
 ts3
+asyncio
+websockets
+json
