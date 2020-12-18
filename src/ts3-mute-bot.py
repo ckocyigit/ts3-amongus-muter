@@ -39,12 +39,13 @@ def mute():
         for client in clientlist:
             if client["cid"] == teamspeakAmongUsChannelID:
                 servergruppen = ts3conn.servergroupsbyclientid(cldbid=client["client_database_id"]).parsed
+                hasGrp = False
                 for gruppe in servergruppen:
-                    if gruppe["sgid"] == teamspeakAmongUsServerGroupID:
-                        pass
-                    else:
-                        ts3conn.servergroupdelclient(sgid=teamspeakAmongUsServerGroupID,
-                                                     cldbid=client["client_database_id"])
+                    if gruppe["sgid"] == "51":
+                        hasGrp = True
+                if hasGrp == False:
+                    ts3conn.servergroupaddclient(sgid=teamspeakAmongUsServerGroupID,
+                                                 cldbid=client["client_database_id"])
 
 
 def demute():
@@ -86,8 +87,9 @@ def handleEvent(event):
             demute()
     elif event == 1:
         deathstate = json.loads(eventData)
-        deaths.append(deathstate["Name"])
-        print("added {} to deathsarray".format(deathstate["Name"]))
+        if deathstate["isDead"] == "true" or deathstate["isDisconnected"] == "true":
+            deaths.append(deathstate["Name"])
+            print("added {} to deathsarray".format(deathstate["Name"]))
         # jemand ist gestorben
         pass
     elif event == 2:
@@ -98,6 +100,11 @@ def handleEvent(event):
         # "GameOverReason":0 imposter wins
         # "GameOverReason":1 crew wins
         demute()
+
+
+def revealDeath():
+    for death in deaths:
+        pass
 
 
 async def client():
