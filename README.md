@@ -14,8 +14,10 @@ It needs a server group and a channel to organize everything.
 
 An example:
 
-Among Us(Servergroup) with negative talk power \n
-Among Us(Channel) with 0 talk power \n
+- Among Us(Servergroup) with negative talk power
+- Among Us(Channel) with 0 talk power
+
+everyone with the servergroup will be muted and that's how to bot manages to mute people
 
 ### Prerequisites
 
