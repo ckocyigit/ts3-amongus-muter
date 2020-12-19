@@ -33,5 +33,5 @@ jobs:
         prerelease: true
         title: "Development Build"
         files: |
-          exe
-          configfile
+          config.json
+          src/dist/windows/ts3-mute-bot.exe
