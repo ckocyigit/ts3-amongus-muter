@@ -14,10 +14,16 @@ It needs a server group and a channel to organize everything.
 
 An example:
 
-Among Us(Servergroup) with negative talk power
-Among Us(Channel) with 0 talk power
+Among Us(Servergroup) with negative talk power \n
+Among Us(Channel) with 0 talk power \n
 
 ### Prerequisites
 
+- config.json configured
+- Teamspeak3 Servergroup and channel
+- AmongUs Capture working and running
 
 ### Installation
+
+Download config and exe and run it after starting among us capture
+These exe's does not have to be in the same location.
