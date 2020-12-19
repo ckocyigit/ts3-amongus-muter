@@ -1,8 +1,8 @@
 on: [push]
 
 jobs:
+ 
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -15,5 +15,23 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: name-of-artifact
+        name: exe
         path: src/dist/windows
+   
+    - uses: actions/upload-artifact@v2
+      with:
+        name: configfile
+        path: config.json
+
+    - name: "Build & test"
+      run: |
+        echo "done!"
+    - uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: true
+        title: "Development Build"
+        files: |
+          exe
+          configfile
